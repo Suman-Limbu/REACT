@@ -4,9 +4,7 @@ import ComponentB from "./ComponentB";
 
 const ComponentA = () => {
   const dispatch = useDispatch();
-  const {count,cube}=useSelector((state)=>state.counter);
-
-
+  const { count, cube } = useSelector((state) => state.counter);
 
   function increaseCounter() {
     dispatch(increment());
@@ -24,7 +22,7 @@ const ComponentA = () => {
       </div>
       <span>valueA:{count}</span>
       <span>valueC:{cube}</span>
-      <ComponentB  />
+      <ComponentB />
     </div>
   );
 };

@@ -7,7 +7,7 @@ export default function Card({ title, price, brand }) {
       <h1>{title}</h1>
       <span>{price}</span>
       <p>{brand}</p>
-    
+
       <button
         onClick={() => {
           setFavorite(!favorite);

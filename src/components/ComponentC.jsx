@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ComponentD from "../components/ComponentD";
-import { setCube } from '../redux/counterSlice';
+import { setCube } from "../redux/counterSlice";
 const ComponentC = ({ numC }) => {
   const { count } = useSelector((state) => state.counter);
   const dispatch = useDispatch();
