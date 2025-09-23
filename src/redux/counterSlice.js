@@ -4,9 +4,9 @@ const counterSlice = createSlice({
   name: "counter",
   initialState: {
     count: 0,
+    cube:0,
     user:"Ram",
     age:20,
-
   },
   reducers: {
     increment: (state) => {
@@ -17,9 +17,12 @@ const counterSlice = createSlice({
     },
     incrementByValue: (state,action)=>{
         state.count = state.count+action.payload;
+    },
+    setCube: (state,action)=>{
+      state.cube=action.payload;
     }
   },
 });
 
-export const { increment, decrement,incrementByValue } = counterSlice.actions;
+export const { increment, decrement,incrementByValue,setCube } = counterSlice.actions;
 export default counterSlice.reducer;

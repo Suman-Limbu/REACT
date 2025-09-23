@@ -4,7 +4,7 @@ import ComponentB from "./ComponentB";
 
 const ComponentA = () => {
   const dispatch = useDispatch();
-  const {count}=useSelector((state)=>state.counter);
+  const {count,cube}=useSelector((state)=>state.counter);
 
 
 
@@ -22,7 +22,8 @@ const ComponentA = () => {
         <button onClick={increaseCounter}>increase</button>
         <button onClick={decreaseCounter}>decrease</button>
       </div>
-      <span>value:{count}</span>
+      <span>valueA:{count}</span>
+      <span>valueC:{cube}</span>
       <ComponentB  />
     </div>
   );

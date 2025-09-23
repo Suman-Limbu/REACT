@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Card from "./Card";
 import ComponentA from "./components/ComponentA";
+import ProductsTable from "./components/ProductsTable";
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -15,6 +16,7 @@ export default function App() {
   const titleRef=useRef(null);
   return (
     <div>
+           <ProductsTable />
       <span>count:{count}</span>
        <ComponentA />
      
@@ -31,7 +33,7 @@ export default function App() {
       <Card title="Samsung Galaxy S24" brand="Samsung" price="1800" />
       <Card title="onePlus Nord" brand="onePlus" price={1990} />
       <Card title="Iphone 17" brand="Apple" price={1499} />
-     
+
     </div>
   );
 }
