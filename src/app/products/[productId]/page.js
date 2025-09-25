@@ -1,0 +1,21 @@
+
+const productDetails =async ({params}) => {
+    const productId=(await params).productId;
+        const product=await fetch(`https://mern-20250622.vercel.app/api/products/${productId}`).then((res)=>res?.json());
+  return (
+    <div>
+        <h1 className="text-4xl">productDetails: {productId}</h1>
+        <ul>
+            <li>{product.name}</li>
+            <li>{product.brand}</li>
+            <li>{product.price}</li>
+              <li>{product.description}</li>
+        </ul>
+    
+    
+    
+    </div>
+  )
+}
+
+export default productDetails;
