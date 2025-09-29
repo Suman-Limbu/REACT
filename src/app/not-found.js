@@ -1,9 +1,8 @@
-
-import { Link } from 'next/link';
-import { HOME_ROUTE } from './../constants/routes';
+import Link from "next/link";
+import { HOME_ROUTE } from "./../constants/routes";
 const NotFoundPage = () => {
   return (
-   <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="text-center">
         <h1 className="text-9xl font-bold text-gray-800">404</h1>
         <p className="text-2xl md:text-3xl font-light mt-4 text-gray-600">
@@ -23,7 +22,7 @@ const NotFoundPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default NotFoundPage;

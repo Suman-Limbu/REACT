@@ -1,6 +1,8 @@
+import config from "@/config";
+
 async function GetProductById(productId) {
   const product = await fetch(
-    `https://node-20250302.vercel.app/api/products/${productId}`
+    `${config.apiUrl}/api/products/${productId}`
   )
     .then((res) => res?.json())
     .catch((error) => {

@@ -1,5 +1,6 @@
 import Header from "@/Components/Header";
 import config from "@/config";
+import Footer from './../Components/Footer';
 import "./globals.css";
 
 export const metadata = {
@@ -16,8 +17,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Header />
-        {children}
-        <footer>This is footer</footer>
+        <main className="min-h-screen">{children}</main>
+        <Footer />
       </body>
     </html>
   );
