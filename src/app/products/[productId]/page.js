@@ -1,18 +1,9 @@
-import config from "@/config";
+import { getProductById } from "@/api/products";
 
-async function GetProductById(productId) {
-  const product = await fetch(
-    `${config.apiUrl}/api/products/${productId}`
-  )
-    .then((res) => res?.json())
-    .catch((error) => {
-      throw new Error("product not found");
-    });
-  return product;
-}
+
 export const generateMetadata = async ({ params }) => {
   const productId = (await params).productId;
-  const product =await GetProductById(productId);
+  const product =await getProductById(productId);
   return {
     title: product?.name,
     keywords: `${product?.name},${product?.brand},${product?.category}`,
@@ -22,7 +13,8 @@ export const generateMetadata = async ({ params }) => {
 const productDetails = async ({ params }) => {
   const productId = (await params).productId;
 
-  const product =await GetProductById(productId);
+  const response =await getProductById(productId);
+  const product= response.data;
 
   return (
     <div>

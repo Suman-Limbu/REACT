@@ -2,7 +2,7 @@ import imagePlaceholder from "@/assets/images/products/placeholder.png";
 import { PRODUCTS_ROUTE } from "@/constants/routes";
 import Image from "next/image";
 import Link from "next/link";
-import { FaCartShopping, FaStar } from "react-icons/fa6";
+import { FaCartPlus, FaStar } from "react-icons/fa6";
 
 const ProductCard = ({ product }) => {
   return (
@@ -44,7 +44,7 @@ const ProductCard = ({ product }) => {
               </span>
             </div>
             <button className="text-primary">
-              <FaCartShopping />
+              <FaCartPlus />
             </button>
           </div>
         </div>
