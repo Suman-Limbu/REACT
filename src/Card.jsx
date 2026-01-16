@@ -12,7 +12,7 @@ export default function Card({ title, price, brand }) {
         onClick={() => {
           setFavorite(!favorite);
         }}
-      >
+     >
         {favorite ? "notlike" : "like"}
       </button>
     </div>
