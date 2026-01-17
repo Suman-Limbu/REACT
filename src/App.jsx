@@ -6,6 +6,7 @@ const App = () => {
   return (
     <div>To-Do List
       <Input list={list} setList={setList}/>
+      {list}
     </div>
   )
 }
