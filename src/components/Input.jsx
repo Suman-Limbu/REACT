@@ -10,14 +10,20 @@ const Input = ({ list, setList }) => {
   };
   return (
     <>
-      <form >
-        <input className=" border-amber-600 mx-3 border-2"
+      <form>
+        <input
+          className=" border-gray-600 mx-3 border"
           type="text"
           placeholder="Add item"
           value={todos}
           onChange={(e) => setTodos(e.target.value)}
         />
-        <button onClick={handleChange}>Add</button>
+        <button
+          onClick={handleChange}
+          className="bg-violet-400 text-white px-2 py-0.5 rounded-lg cursor-pointer hover:shadow-md"
+        >
+          Add
+        </button>
       </form>
     </>
   );
