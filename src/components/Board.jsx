@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Board = () => {
+const Board = ({item}) => {
   return (
-    <div>Board</div>
+    <div className="border flex flex-col items-center justify-center ">{item}</div>
   )
 }
 
