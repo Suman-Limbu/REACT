@@ -8,7 +8,7 @@ const App = () => {
     <div className="flex flex-col items-center justify-center gap-5">
       <h1 className="">To-Do List</h1>
       <Input list={list} setList={setList} />
-   <div>
+   <div className="border border-black bg-amber-200 ">
        {list.map((item, index) => (
         <li key={index}>{item}</li>
       ))}
