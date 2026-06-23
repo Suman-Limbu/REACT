@@ -8,18 +8,19 @@ import Navbar from "./components/Navbar";
 const App = () => {
   const [isSticky, setIsSticky] = useState(false);
   useEffect(() => {
-  const handleScroll = () => {
-    if (window.scrollY > 80) {
-      setIsSticky(true);
-    } else {
-      setIsSticky(false);
-    }
-  };
+    const handleScroll = () => {
+      if (window.scrollY > 80) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
 
-  window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div>
       <div className="bg-blue-500 h-10 w-full flex gap-3 items-center justify-center">
@@ -37,14 +38,15 @@ const App = () => {
           Log in
         </button>
       </div>
-   <div
-  className={`sticky top-0 w-full transition-all duration-300 ${
-    isSticky ? "shadow-md border-b bg-white/80 backdrop-blur-md"
-  : "bg-gray-300"
-  }`}
->
-  <Navbar />
-</div>
+      <div
+        className={`sticky top-0 w-full transition-all duration-300 ${
+          isSticky
+            ? " shadow-md border-b bg-white/80 backdrop-blur-md"
+            : " bg-gray-400"
+        }`}
+      >
+        <Navbar />
+      </div>
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
