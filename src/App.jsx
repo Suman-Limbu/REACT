@@ -1,55 +1,28 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
-
-import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Blogs from "./pages/Blogs";
+import Home from "./pages/Home";
+import Course from "./pages/Course";
+import Memo from "./Memo";
+import Products from "./pages/Products";
+
+
 
 const App = () => {
-  const [isSticky, setIsSticky] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 80) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+const [count,setCount]=useState(0);
   return (
-    <div>
-      <div className="bg-blue-500 h-10 w-full flex gap-3 items-center justify-center">
-        <button className="bg-green-400 rounded-2xl px-2 py-0.5 font-light text-sm ">
-          show me how
-        </button>
-        <p className="text-white text-sm ">
-          Turn Every Product Question Into sales With Trile Ai
-        </p>
-      </div>
+    <div className="bg-red-400">
+      <Navbar />
 
-      <div className="flex justify-end gap-10 py-6 max-w-7xl mx-auto">
-        <p className="text-gray-400 font-semibold">EN</p>
-        <button className="hover:underline hover:underline-offset-5 font-semibold">
-          Log in
-        </button>
-      </div>
-      <div
-        className={`sticky top-0 w-full transition-all duration-300 ${
-          isSticky
-            ? " shadow-md border-b bg-white/80 backdrop-blur-md"
-            : " bg-gray-400"
-        }`}
-      >
-        <Navbar />
-      </div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/course" element={<Course />} />
+         <Route path="/products" element={<Products />} />
       </Routes>
+
     </div>
   );
 };

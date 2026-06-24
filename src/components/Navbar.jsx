@@ -1,48 +1,49 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const list = [
     {
-      label: "Lyrio agent",
+      label: "Home",
       path: "/",
     },
     {
-      label: "Product",
+      label: "blogs",
       path: "/blogs",
     },
     {
-      label: "Pricing",
+      label: "Products",
+      path: "/products",
+    },
+    {
+      label: "Course",
       path: "/course",
     },
-        {
-      label: "Solutions",
-      path: "/course",
-    },
-        {
+    {
       label: "Resources",
-      path: "/course",
+      path: "/resources",
     },
-    
   ];
 
+  const handle = () => {
+    alert("world");
+  };
+
   return (
-    <div className="w-full">
-
-
-
-
-
-      <div className="max-w-7xl mx-auto flex justify-between py-6">
-        {list.map((itm)=>
-         <p className="text-lg font-medium">{itm.label}</p>
-        )}
-       
-
-
-      </div>
-    </div>
+    <header className="w-full">
+      <nav className="max-w-7xl mx-auto flex justify-between py-6 bg-green-500">
+        
+        {list.map((itm) => (
+          <Link
+           to={itm.path}
+            className="text-lg font-medium bg-yellow-500"
+          >
+            {itm.label}
+          </Link>
+        ))}
+      </nav>
+    </header>
   );
 };
 
