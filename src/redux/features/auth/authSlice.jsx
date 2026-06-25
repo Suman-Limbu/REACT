@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import login from "./authAction";
+import { login } from "./authAction";
 
 const authSlice = createSlice({
   name: "auth",
   initialState: {
-    user: {},
+    user: null,
     loading: false,
     error: null,
   },
@@ -12,15 +12,19 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(login.pending, (state) => {
-        ((state.loading = true), (state.error = null));
+        state.loading = true;
+        state.error = null;
       })
       .addCase(login.fulfilled, (state, action) => {
-        ((state.loading = false), (state.user = action.payload));
+        state.loading = true;
+        state.user = action.payload;
       })
       .addCase(login.rejected, (state, action) => {
-        ((state.loading = false), (state.error = action.payload));
+        state.loading = true;
+        state.error = action.payload;
       });
   },
 });
+
 
 export default authSlice.reducer;
