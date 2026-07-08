@@ -11,7 +11,7 @@ const productSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getProducts.pending, (state) => {
+      .addCase(gnetProducts.pending, (state) => {
         state.loading = true;
         state.error = null;
       })

@@ -26,19 +26,11 @@ const Navbar = () => {
     },
   ];
 
-  const handle = () => {
-    alert("world");
-  };
-
   return (
     <header className="w-full">
       <nav className="max-w-7xl mx-auto flex justify-between py-6 bg-green-500">
-        
         {list.map((itm) => (
-          <Link
-           to={itm.path}
-            className="text-lg font-medium bg-yellow-500"
-          >
+          <Link to={itm.path} className="text-lg font-medium bg-yellow-500">
             {itm.label}
           </Link>
         ))}
