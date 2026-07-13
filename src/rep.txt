@@ -1,0 +1,335 @@
+     <tbody>
+    {totalItems.map((item) => (
+        <tr key={item}>
+            <td className="border p-3">
+                {item}
+            </td>
+
+            <td className="border p-3">
+                <Input
+                    type="number"
+                    placeholder="Qty"
+                    className="h-8 px-2"
+                />
+            </td>
+
+            <td className="border p-3">
+                NPR 1200
+            </td>
+
+            <td className="border p-3">
+                NPR 1200
+            </td>
+
+            <td className="border p-3 text-center">
+                <Trash2
+                    className="cursor-pointer"
+                    onClick={() =>
+                        setTotalItems(
+                            totalItems.filter((i) => i !== item)
+                        )
+                    }
+                />
+            </td>
+        </tr>
+    ))}
+</tbody>
+
+
+///////
+import { useMemo, useState } from "react";
+
+const cashiers = [
+  "John Smith",
+  "Sarah Wilson",
+  "Michael Lee",
+  "Emma Brown",
+];
+
+const menuItems = [
+  { name: "Burger", price: 250 },
+  { name: "Pizza", price: 500 },
+  { name: "Momo", price: 180 },
+  { name: "Coke", price: 80 },
+];
+
+export default function Demo() {
+  const [cashier, setCashier] = useState("");
+  const [customerName, setCustomerName] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const [items, setItems] = useState([
+    {
+      item: "",
+      quantity: 1,
+      price: 0,
+    },
+  ]);
+
+  const [discount, setDiscount] = useState(0);
+  const [paymentMethod, setPaymentMethod] = useState("Cash");
+
+  const handleItemChange = (index, value) => {
+    const updated = [...items];
+
+    const selected = menuItems.find((i) => i.name === value);
+
+    updated[index].item = value;
+    updated[index].price = selected?.price || 0;
+
+    setItems(updated);
+  };
+
+  const handleQuantityChange = (index, qty) => {
+    const updated = [...items];
+    updated[index].quantity = Number(qty);
+    setItems(updated);
+  };
+
+  const addItem = () => {
+    setItems([
+      ...items,
+      {
+        item: "",
+        quantity: 1,
+        price: 0,
+      },
+    ]);
+  };
+
+  const removeItem = (index) => {
+    const updated = items.filter((_, i) => i !== index);
+    setItems(updated);
+  };
+
+  const subtotal = useMemo(() => {
+    return items.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
+  }, [items]);
+
+  const discountAmount = subtotal * (discount / 100);
+
+  const taxableAmount = subtotal - discountAmount;
+
+  const vat = taxableAmount * 0.13;
+
+  const grandTotal = taxableAmount + vat;
+
+  return (
+    <div className="mx-auto max-w-6xl rounded-xl bg-white p-6 shadow">
+      <h2 className="mb-6 text-2xl font-bold">Create Invoice</h2>
+
+      {/* Customer Info */}
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div>
+          <label className="mb-1 block font-medium">
+            Cashier
+          </label>
+
+          <select
+            value={cashier}
+            onChange={(e) => setCashier(e.target.value)}
+            className="w-full rounded-lg border p-2"
+          >
+            <option value="">Select Cashier</option>
+
+            {cashiers.map((cashier) => (
+              <option key={cashier}>{cashier}</option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label className="mb-1 block font-medium">
+            Customer Name
+          </label>
+
+          <input
+            value={customerName}
+            onChange={(e) => setCustomerName(e.target.value)}
+            className="w-full rounded-lg border p-2"
+            placeholder="Enter customer"
+          />
+        </div>
+
+        <div>
+          <label className="mb-1 block font-medium">
+            Phone Number
+          </label>
+
+          <input
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            className="w-full rounded-lg border p-2"
+            placeholder="98XXXXXXXX"
+          />
+        </div>
+      </div>
+
+      {/* Items Table */}
+      <div className="mt-8 overflow-x-auto">
+        <table className="w-full border">
+          <thead className="bg-gray-100">
+            <tr>
+              <th className="border p-3">Item</th>
+              <th className="border p-3">Qty</th>
+              <th className="border p-3">Price</th>
+              <th className="border p-3">Total</th>
+              <th className="border p-3">Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {items.map((item, index) => (
+              <tr key={index}>
+                <td className="border p-2">
+                  <select
+                    value={item.item}
+                    onChange={(e) =>
+                      handleItemChange(index, e.target.value)
+                    }
+                    className="w-full rounded border p-2"
+                  >
+                    <option>Select Item</option>
+
+                    {menuItems.map((menu) => (
+                      <option key={menu.name} value={menu.name}>
+                        {menu.name}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+
+                <td className="border p-2">
+                  <input
+                    type="number"
+                    min="1"
+                    value={item.quantity}
+                    onChange={(e) =>
+                      handleQuantityChange(index, e.target.value)
+                    }
+                    className="w-20 rounded border p-2"
+                  />
+                </td>
+
+                <td className="border p-2">
+                  NPR {item.price}
+                </td>
+
+                <td className="border p-2">
+                  NPR {item.price * item.quantity}
+                </td>
+
+                <td className="border p-2 text-center">
+                  <button
+                    onClick={() => removeItem(index)}
+                    className="text-red-500"
+                  >
+                    Remove
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <button
+          onClick={addItem}
+          className="mt-4 rounded-lg bg-blue-600 px-4 py-2 text-white"
+        >
+          + Add Item
+        </button>
+      </div>
+
+      {/* Discount */}
+      <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div>
+          <label className="mb-1 block font-medium">
+            Discount (%)
+          </label>
+
+          <input
+            type="number"
+            value={discount}
+            onChange={(e) =>
+              setDiscount(Number(e.target.value))
+            }
+            className="w-full rounded-lg border p-2"
+          />
+        </div>
+
+        <div>
+          <label className="mb-1 block font-medium">
+            VAT
+          </label>
+
+          <input
+            value="13%"
+            readOnly
+            className="w-full rounded-lg border bg-gray-100 p-2"
+          />
+        </div>
+
+        <div>
+          <label className="mb-1 block font-medium">
+            Payment Method
+          </label>
+
+          <select
+            value={paymentMethod}
+            onChange={(e) =>
+              setPaymentMethod(e.target.value)
+            }
+            className="w-full rounded-lg border p-2"
+          >
+            <option>Cash</option>
+            <option>QR</option>
+            <option>Bank</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Summary */}
+      <div className="mt-10 ml-auto w-full max-w-sm rounded-lg border p-5">
+        <div className="mb-2 flex justify-between">
+          <span>Subtotal</span>
+          <span>NPR {subtotal.toFixed(2)}</span>
+        </div>
+
+        <div className="mb-2 flex justify-between">
+          <span>Discount</span>
+          <span>- NPR {discountAmount.toFixed(2)}</span>
+        </div>
+
+        <div className="mb-2 flex justify-between">
+          <span>VAT (13%)</span>
+          <span>NPR {vat.toFixed(2)}</span>
+        </div>
+
+        <hr className="my-3" />
+
+        <div className="flex justify-between text-lg font-bold">
+          <span>Total</span>
+          <span>NPR {grandTotal.toFixed(2)}</span>
+        </div>
+      </div>
+
+      {/* Buttons */}
+      <div className="mt-8 flex justify-end gap-3">
+        <button className="rounded-lg border px-5 py-2">
+          Cancel
+        </button>
+
+        <button className="rounded-lg bg-green-600 px-5 py-2 text-white">
+          Save Invoice
+        </button>
+
+        <button className="rounded-lg bg-blue-600 px-5 py-2 text-white">
+          Print Invoice
+        </button>
+      </div>
+    </div>
+  );
+}
