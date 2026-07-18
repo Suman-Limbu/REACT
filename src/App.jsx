@@ -3,8 +3,8 @@ import "./App.css";
 import React, { useState } from "react";
 import Home from "./pages/Home";
 
-const App = () => {};
-
+const App = () => 
+{
 return (
   <div>
     <Routes>
@@ -12,5 +12,5 @@ return (
     </Routes>
   </div>
 );
-
+}
 export default App;
