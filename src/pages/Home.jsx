@@ -1,11 +1,15 @@
-import React from 'react'
-import Combobox from "../components/ui/combobox"
-const Home = () => {
-  return (
-    <div>
-      <Combobox/>
-    </div>
-  )
-}
+import { useCount } from "@/context/counterContext";
+import React from "react";
 
-export default Home
+const Home = () => {
+  const { count, setCount, inc } = useCount();
+  const handleCount = () => {};
+  return (
+    <>
+      <div>{count}</div>
+      <button onClick={handleCount}>inc</button>
+    </>
+  );
+};
+
+export default Home;
