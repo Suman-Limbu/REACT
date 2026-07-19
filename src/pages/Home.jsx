@@ -1,13 +1,45 @@
-import { useCount } from "@/context/counterContext";
-import React from "react";
+import Select from "@/components/ui/Select";
+import React, { useState } from "react";
 
 const Home = () => {
-  const { count, setCount, inc } = useCount();
-  const handleCount = () => {};
+  const countries = [
+    // {
+    //   label: "Nepal",
+    //   value: "np",
+    // },
+    // {
+    //   label: "India",
+    //   value: "in",
+    // },
+    // {
+    //   label: "USA",
+    //   value: "us",
+    // },
+
+    "apple",
+    "ball",
+    "cat",
+    "dog",
+    "cow",
+    "goat",
+  ];
+  const [country, setCountry] = useState("");
+
   return (
     <>
-      <div>{count}</div>
-      <button onClick={handleCount}>inc</button>
+      <div className=" p-5">
+        <Select
+          label="Country"
+          required
+          variant="outline"
+          name="country"
+          value={country}
+          onChange={(e) => setCountry(e.target.value)}
+          options={countries}
+        >
+          choose
+        </Select>
+      </div>
     </>
   );
 };
