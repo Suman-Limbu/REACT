@@ -27,7 +27,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="w-full bg-red-500 h-10">
+    <header className="w-full h-10">
       <nav className="max-w-7xl mx-auto flex justify-between items-center ">
         {list.map((itm) => (
           <Link to={itm.path} className="text-lg font-medium bg-yellow-500">
