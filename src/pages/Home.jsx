@@ -1,4 +1,9 @@
+import Button from "@/components/ui/button";
+import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
+import { useTheme } from "@/context/ThemeContext";
+
+
 import React, { useState } from "react";
 
 const Home = () => {
@@ -23,22 +28,14 @@ const Home = () => {
     "cow",
     "goat",
   ];
-  const [country, setCountry] = useState("");
+  const {theme}= useTheme();
+  console.log(theme)
+    const [country, setCountry] = useState("");
 
   return (
     <>
-      <div className=" p-5">
-        <Select
-          label="Country"
-          required
-          variant="outline"
-          name="country"
-          value={country}
-          onChange={(e) => setCountry(e.target.value)}
-          options={countries}
-        >
-          choose
-        </Select>
+      <div className=" p-5 space-y-6">
+
       </div>
     </>
   );
