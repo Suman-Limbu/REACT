@@ -1,26 +1,25 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import React, { useState } from "react";
+import React from "react";
 import Home from "./pages/Home";
-import Demo from "./pages/Demo";
 import MainLayout from "./layout/MainLayout";
-import Blogs from "./pages/Blogs";
+import Products from "./pages/Products";
+import ProductDetail from "./components/products/ProductDetail";
 
-const App = () => 
-{
-return (
-  <div className="">
-    <Routes>
-      <Route  element={<MainLayout/>}>
-      
-         <Route path="/" element={<Home />} />
-       <Route path="/blogs" element={<Blogs />} />
-      
-      
-      </Route>
+
+const App = () => {
+  return (
    
-    </Routes>
-  </div>
-);
-}
+      <Routes>
+        <Route element={<MainLayout/>}>
+          <Route path="/" element={<Home />} />
+           <Route path="/products/" element={<Products />} />
+             <Route path="/products/:id" element={<ProductDetail />} />
+         
+        </Route>
+
+      </Routes>
+
+  );
+};
 export default App;
