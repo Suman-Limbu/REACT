@@ -14,10 +14,7 @@ const ProductsFilters = ({
     <div>
       <Input value={search} onChange={(e) => setSearch(e.target.value)} />
 
-      <Select
-        options={categories}
-        onClick={(e) => setCategory(e.target.value)}
-      />
+      <Select options={categories} onChange={(value) => setCategory(value)} />
     </div>
   );
 };

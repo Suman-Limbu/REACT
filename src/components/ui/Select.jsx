@@ -11,7 +11,7 @@ const Select = ({
   disabled = false,
   error = "",
   value,
-  onClick,
+  onChange,
   className = "",
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,7 +72,7 @@ const Select = ({
       <button
         type="button"
         disabled={disabled}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {setIsOpen(!isOpen)}}
         className={`
           ${baseStyles} 
           ${sizes[size]} 
@@ -105,7 +105,10 @@ const Select = ({
                   return (
                     <li
                       key={idx}
-                      onClick={onClick}
+                       onClick={() => {
+    onChange(option);
+    setIsOpen(false);
+  }}
                       className={`
                         cursor-pointer select-none py-2 px-4 text-left transition-colors duration-150
                         ${isSelected ? "bg-blue-50 text-blue-700 font-semibold" : "hover:bg-gray-50 text-gray-900"}
