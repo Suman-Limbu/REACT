@@ -1,5 +1,5 @@
 import Button from "@/components/ui/Button";
-import { useCart } from "@/context/CartContext";
+
 import React from "react";
 import { Link } from "react-router-dom";
 

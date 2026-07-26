@@ -21,7 +21,7 @@ const Input = ({
   const inputId = id || generateId;
 
   const [open, setOpen] = useState(false);
-  const [text, setText] = useState("");
+
   const sizes = {
     sm: "h-8 text-sm",
     md: "h-10 text-base",
@@ -39,7 +39,8 @@ const Input = ({
       <input
         {...props}
         id={inputId}
-        onChange={(e) => setText(e.target.value)}
+        value={value}
+        onChange={onChange}
         defaultValue={defaultValue}
         type={type}
         required={required}
@@ -77,7 +78,3 @@ ${error ? " focus:border-red-500 focus:ring-red-500/20" : ""}
 };
 
 export default Input;
-
-
-
-
