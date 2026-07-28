@@ -1,0 +1,195 @@
+// INVOICE FORM DATA
+export const InvoiceItems = [
+  { id: 1, itemName: "React", price: 300, qty: 1 },
+  { id: 2, itemName: "Vue", price: 500, qty: 1 },
+  { id: 3, itemName: "Angular", price: 1500, qty: 1 },
+  { id: 4, itemName: "Sevelte", price: 1100, qty: 1 },
+  { id: 5, itemName: "Next.js", price: 1900, qty: 1 },
+  { id: 6, itemName: "SolidJS", price: 100, qty: 1 },
+  { id: 7, itemName: "Nuxt", price: 800, qty: 1 },
+];
+
+// TABLE DATA
+
+//Billing page
+export const tableHeadData = [
+  "Date",
+  "Invoice",
+  "Customer",
+  "Quantity",
+  "Gross",
+  "Discount",
+  "VAT",
+  "Payment Status",
+  "Net",
+  "Actions",
+];
+
+//Billing page
+export const dataTable = [
+  {
+    id: 1,
+    invoice_no: "INV-1001",
+    created_at: "2026-07-07T10:30:00Z",
+    customerId: "John Doe",
+    table_number: "T-01",
+
+    qty: 5,
+    subtotal: 1250,
+    discount: 100,
+    vat_amount: 149,
+    payment_status: "Paid",
+    grand_total: 1299,
+  },
+  {
+    id: 2,
+    invoice_no: "INV-1002",
+    created_at: "2026-07-07T12:15:00Z",
+    customerId: "Alice Smith",
+    table_number: "T-04",
+    qty: 12,
+    subtotal: 1800,
+    discount: 150,
+    vat_amount: 198,
+    payment_status: "Paid",
+    grand_total: 1848,
+  },
+  {
+    id: 3,
+    invoice_no: "INV-1003",
+    created_at: "2026-07-06T19:45:00Z",
+    customerId: "Michael Johnson",
+    table_number: "T-08",
+    qty: 15,
+    subtotal: 2100,
+    discount: 200,
+    vat_amount: 216,
+    payment_status: "Paid",
+    grand_total: 2116,
+  },
+  {
+    id: 4,
+    invoice_no: "INV-1004",
+    created_at: "2026-07-06T20:30:00Z",
+    customerId: "Emily Brown",
+    table_number: "T-05",
+    qty: 7,
+    subtotal: 900,
+    discount: 50,
+    vat_amount: 102,
+    payment_status: "Paid",
+    grand_total: 952,
+  },
+  {
+    id: 5,
+    invoice_no: "INV-1005",
+    created_at: "2026-07-05T14:20:00Z",
+    customerId: "Sophia Wilson",
+    table_number: "Takeaway",
+    qty: 10,
+    subtotal: 2450,
+    discount: 250,
+    vat_amount: 264,
+    payment_status: "Paid",
+    grand_total: 2464,
+  },
+];
+
+//Sales page
+export const salesHeadData = [
+  "Date",
+  "Invoice",
+  "Customers",
+  "Pan/Vat",
+  "Exempted",
+  "Sales",
+  "Taxable Amount",
+  " Vat Amount",
+  "Total",
+  "Actions",
+];
+{
+  /* <tr className="bg-emerald-100 text-center">
+            <th className="border-gray-300/50 border p-2">Date</th>
+            <th className="border-gray-300/50 border p-2">Invoice</th>
+            <th className="border-gray-300/50 border p-2">Customers</th>
+            <th className="border-gray-300/50 border p-2">Pan/Vat</th>
+            <th className="border-gray-300/50 border p-2">Exempted Sales</th>
+            <th className="border-gray-300/50 border p-2">Taxable Amount</th>
+            <th className="border-gray-300/50 border p-2">Vat Amount</th>
+            <th className="border-gray-300/50 border p-2">Total</th>
+            <th className="border-gray-300/50 border p-2">Actions</th>
+          </tr> */
+}
+
+export const salesData = [
+  {
+    id: 1,
+    invoice_no: "INV-1001",
+    created_at: "2026-07-07T10:30:00Z",
+    buyerName: "John Doe",
+    buyerPANVAT: "123456789",
+    totalSales: 25000,
+    ExemptedSales: 5000,
+    TaxableAmount: 20000,
+    vatAmount: 2600,
+  },
+  {
+    id: 2,
+    invoice_no: "INV-1002",
+    created_at: "2026-07-08T11:45:00Z",
+    buyerName: "Alice Smith",
+    buyerPANVAT: "987654321",
+    totalSales: 18000,
+    ExemptedSales: 3000,
+    TaxableAmount: 15000,
+    vatAmount: 1950,
+  },
+  {
+    id: 3,
+    invoice_no: "INV-1003",
+    created_at: "2026-07-09T09:20:00Z",
+    buyerName: "Michael Johnson",
+    buyerPANVAT: "456123789",
+    totalSales: 32000,
+    ExemptedSales: 2000,
+    TaxableAmount: 30000,
+    vatAmount: 3900,
+  },
+  {
+    id: 4,
+    invoice_no: "INV-1004",
+    created_at: "2026-07-10T15:10:00Z",
+    buyerName: "Emily Davis",
+    buyerPANVAT: "741852963",
+    totalSales: 14500,
+    ExemptedSales: 1500,
+    TaxableAmount: 13000,
+    vatAmount: 1690,
+  },
+  {
+    id: 5,
+    invoice_no: "INV-1005",
+    created_at: "2026-07-11T13:00:00Z",
+    buyerName: "Robert Wilson",
+    buyerPANVAT: "369258147",
+    totalSales: 41000,
+    ExemptedSales: 6000,
+    TaxableAmount: 35000,
+    vatAmount: 4550,
+  },
+];
+
+//Daybook page
+export const daybookTableheadData = [
+  "Date",
+  "Particulars",
+  "Due",
+  "Credit",
+  "Cash in",
+  "Cash out",
+  "VAT",
+  "Payment Status",
+  "Net",
+  "Actions",
+];

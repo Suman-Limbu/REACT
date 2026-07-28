@@ -1,33 +1,39 @@
-import { ChevronDown } from "lucide-react";
-import React, { useState } from "react";
+import Table from "@/components/ui/Table";
+import React from "react";
 
 const Demo = () => {
-  const [open, setOpen] = useState(false);
+  const products = [
+    { id: "p1", name: "Wireless Mouse", price: 25.99, qty: 3 },
+    { id: "p2", name: "Mechanical Keyboard", price: 79.5, qty: 1 },
+    { id: "p3", name: "USB-C Hub", price: 34.0, qty: 2 },
+  ];
 
+  const productColumns = [
+    { header: "Product", accessor: (item) => item.name },
+    { header: "Unit Price", accessor: (item) => `$${item.price.toFixed(2)}` },
+    { header: "Qty", accessor: (item) => item.qty },
+  ];
+
+  const inventory = [
+    { id: "i1", itemName: "Steel Bolt (M6)", cost: 0.12, stock: 5000 },
+    { id: "i2", itemName: "Rubber Gasket", cost: 0.45, stock: 1200 },
+    { id: "i3", itemName: "Aluminum Bracket", cost: 3.2, stock: 340 },
+  ];
+  const inventoryColumns = [
+    { header: "Title", accessor: (item) => item.itemName },
+    { header: "cost", accessor: (item) => item.cost },
+    { header: "sotck", accessor: (item) => item.stock },
+  ];
+
+  // const inventoryColumns = [
+  //   { header: "Item", accessor: (item) => item.itemName },
+  //   { header: "Unit Cost", accessor: (item) => `$${item.cost.toFixed(2)}` },
+  //   { header: "Stock", accessor: (item) => item.stock },
+  // ];
   return (
-    <div className="m-6 w-1/2">
-      <div
-        onClick={() => setOpen(!open)}
-        className="ring ring-gray-200 rounded-md shadow-md px-5 py-3 flex justify-between items-center cursor-pointer"
-      >
-        <p className="text-base font-bold text-gray-800">What is React?</p>
-
-        <ChevronDown
-          className={`transition-transform duration-300 ${
-            open ? "rotate-180" : ""
-          }`}
-        />
-      </div>
-
-      <div
-        className={`overflow-hidden transition-all duration-300 ${
-          open ? "max-h-40 opacity-100 mt-2" : "max-h-0 opacity-0"
-        }`}
-      >
-        <p className="text-sm text-gray-600 font-medium">
-          React is a JavaScript library for building user interfaces.
-        </p>
-      </div>
+    <div>
+      <Table columns={productColumns} data={products} />
+      <Table columns={inventoryColumns} data={inventory} />
     </div>
   );
 };
