@@ -83,7 +83,7 @@ const Pay = () => {
       name: "USB-C Hub",
       price: 34.0,
       qty: 2,
-      address: { city: "charali"},
+      address: { city: "charali" },
     },
     { id: "p3", name: "USB-C Hub", price: 34.0, qty: 4, address: "chai" },
   ];
@@ -109,8 +109,8 @@ const Pay = () => {
 
   return (
     <>
-      <Table data={products} columns={productsColumns}  />
-      <Table data={inventory} columns={inventoryColumns}  variant="blue"/>
+      <Table data={products} columns={productsColumns} />
+      <Table data={inventory} columns={inventoryColumns}  />
     </>
   );
 };

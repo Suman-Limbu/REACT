@@ -12,7 +12,7 @@ export const InvoiceItems = [
 // TABLE DATA
 
 //Billing page
-export const tableHeadData = [
+export const billingsHeadData = [
   "Date",
   "Invoice",
   "Customer",
@@ -108,19 +108,6 @@ export const salesHeadData = [
   "Total",
   "Actions",
 ];
-{
-  /* <tr className="bg-emerald-100 text-center">
-            <th className="border-gray-300/50 border p-2">Date</th>
-            <th className="border-gray-300/50 border p-2">Invoice</th>
-            <th className="border-gray-300/50 border p-2">Customers</th>
-            <th className="border-gray-300/50 border p-2">Pan/Vat</th>
-            <th className="border-gray-300/50 border p-2">Exempted Sales</th>
-            <th className="border-gray-300/50 border p-2">Taxable Amount</th>
-            <th className="border-gray-300/50 border p-2">Vat Amount</th>
-            <th className="border-gray-300/50 border p-2">Total</th>
-            <th className="border-gray-300/50 border p-2">Actions</th>
-          </tr> */
-}
 
 export const salesData = [
   {

@@ -3,7 +3,7 @@ const API = "https://dummyjson.com/products";
 
 export const getProducts = async () => {
   try {
-    const { data } = await axios.get(API);
+    const { data } = await axios.get(API); 
     return data.products;
   } catch (error) {
     console.error("Failed to fetch products", error);
