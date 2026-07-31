@@ -1,4 +1,4 @@
-import { getProductById } from "@/services/ProductService";
+import { getProductById } from "@/services/productServices";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
