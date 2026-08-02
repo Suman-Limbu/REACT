@@ -28,7 +28,7 @@ const Input = ({
     lg: "h-12 text-lg",
   };
   return (
-    <div className="relative flex flex-col gap-1 bg-red-500">
+    <div className="relative flex flex-col gap-1 ">
       {label && (
         <label htmlFor={inputId} className="text-gray-800">
           {label}
