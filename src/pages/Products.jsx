@@ -3,66 +3,72 @@ import ProductsFilters from "@/components/products/ProductsFilters";
 import Button from "@/components/ui/Button";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useProducts } from "@/hooks/useProducts";
-import React, { useState } from "react";
+
+import { useEffect, useMemo, useState } from "react";
 
 const Products = () => {
-  const { products, loading } = useProducts();
+  const { products, isLoading } = useProducts();
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("all");
+  const [price, setPrice] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-
   const debouncedSearch = useDebounce(search, 500);
   console.log(debouncedSearch);
-  const categories = ["all", ...new Set(products.map((itm) => itm.category))];
 
-  const filteredproducts = products
-    .filter((itm) =>
-      itm.title.toLowerCase().includes(debouncedSearch.toLowerCase()),
-    )
-    .filter((itm) => (category === "all" ? true : itm.category === category));
+  const categories = useMemo(() => {
+    return ["all", ...new Set(products.map((product) => product.category))];
+  }, [products]);
 
-  // Pagination-----------------------------------
+  const maxPrice = Math.max(...products.map((product) => product.price));
 
+  useEffect(() => {
+    setPrice(Math.max(...products.map((product) => product.price)));
+  }, [products]);
+
+  const filteredProducts = products.filter((product) => {
+    const matchSearch = product.title
+      .toLowerCase()
+      .includes(debouncedSearch.toLowerCase());
+
+    const matchCategory = category === "all" || product.category === category;
+    const matchprice = price === "" || product.price <= price;
+
+    return matchSearch && matchCategory && matchprice;
+  });
   const productsPerPage = 10;
-  const totalPages = Math.ceil(filteredproducts.length / productsPerPage);
-  console.log(products.length, totalPages);
+
+  const totalPages = filteredProducts.length / productsPerPage;
   const startIndex = (currentPage - 1) * productsPerPage;
   const endIndex = startIndex + productsPerPage;
 
-  if (loading)
-    return (
-      <h1 className="flex justify-center text-2xl text-gray-800">
-        Loading....
-      </h1>
-    );
+  if (isLoading) {
+    return <p className="font-bold text-4xl text-red-600">Loading..</p>;
+  }
 
   return (
-    <div className="flex flex-col ">
+    <div>
       <ProductsFilters
-        categories={categories}
         search={search}
         setSearch={setSearch}
         category={category}
+        categories={categories}
         setCategory={setCategory}
+        price={price}
+        setPrice={setPrice}
+        maxPrice={maxPrice}
       />
-      <div className="grid grid-cols-4 gap-6 m-6">
-        {filteredproducts.slice(startIndex, endIndex).map((itm, idx) => (
-          <ProductCard key={itm.id || idx} product={itm} />
+      {filteredProducts.length === 0 && <span>No products found...</span>}
+      <div className="grid grid-cols-4 gap-6 ">
+        {filteredProducts.slice(startIndex, endIndex).map((product, idx) => (
+          <ProductCard key={idx} product={product} />
         ))}
       </div>
 
-      <div className="flex justify-center gap-6">
-        <Button onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}>
-          Prev
-        </Button>
-        <span>{currentPage}</span>
-        <Button
-          onClick={() =>
-            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-          }
-        >
-          Next
-        </Button>
+      <div className="flex gap-3">
+        <Button onClick={() => setCurrentPage(currentPage - 1)}>Prev</Button>
+
+        {currentPage}
+        <Button onClick={() => setCurrentPage(currentPage + 1)}>Next</Button>
       </div>
     </div>
   );
