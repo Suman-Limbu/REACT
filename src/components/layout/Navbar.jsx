@@ -1,10 +1,10 @@
-import { CarTaxiFront, ShoppingBag } from "lucide-react";
+import {ShoppingBag } from "lucide-react";
 import React from "react";
-import { useSelector } from "react-redux";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const { items } = useSelector((state) => state.cart);
+
   const list = [
     {
       label: "Home",
@@ -44,7 +44,7 @@ const Navbar = () => {
           <Link to="cart">
             <ShoppingBag />
             <div className="absolute -top-2 -right-4 bg-red-500 px-2 py-0.5 rounded-full text-white">
-              <span>{items.length}</span>
+              <span>3</span>
             </div>
           </Link>
         </div>
