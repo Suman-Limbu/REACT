@@ -3,19 +3,18 @@ import { useEffect, useState } from "react";
 
 export const useProducts = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isloading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data = await getProducts();
-        setProducts(data);
+        setProducts(await getProducts());
       } catch (err) {
-        console.err(err);
+        console.error(err);
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     };
     fetchProducts();
   }, []);
-  return { products, loading };
+  return { products, isloading };
 };
