@@ -5,15 +5,28 @@ import Select from "../ui/Select";
 const ProductsFilters = ({
   search,
   setSearch,
+  category,
   categories,
   setCategory,
-  category,
+  price,
+  setPrice,
+  maxPrice
 }) => {
-  console.log(category);
   return (
     <div>
-      <Input value={search} onChange={(e) => setSearch(e.target.value)} />
-
+      <Input
+        type="text"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      <Input label={price}
+        type="range"
+        min={0}
+        max={maxPrice}
+        value={price}
+        onChange={(e) => setPrice(e.target.value)}
+      />
+     
       <Select options={categories} onChange={(value) => setCategory(value)} />
     </div>
   );

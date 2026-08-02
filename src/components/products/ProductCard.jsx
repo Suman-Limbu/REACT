@@ -1,13 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
+
 import { Link } from "react-router-dom";
 import Button from "../ui/Button";
-import { addToCart } from "@/redux/slices/CartSlice";
+
 
 const ProductCard = ({ product }) => {
-  const dispatch = useDispatch();
-  const handleClick = () => {
-    dispatch(addToCart(product));
-  };
+
 
   return (
     <div className="border rounded-sm p-2 space-y-4">
@@ -27,7 +24,7 @@ const ProductCard = ({ product }) => {
           {product.category}
         </span>
       </div>
-      <Button onClick={handleClick} variant="lime">
+      <Button variant="lime">
         Add to Cart
       </Button>
     </div>
